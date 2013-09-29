@@ -1,0 +1,15 @@
+/* CSS */
+@import url(http://fonts.googleapis.com/css?family=Kelly+Slab&subset=latin,latin-ext,cyrillic);
+/* Tas pats, tik lokaliai*/
+@font-face {
+	font-family: "Kelly Slab";
+	src: url("fonts/kelly_slab.eot");
+	src: url("fonts/kelly_slab.woff") format("woff"),
+		url("fonts/kelly_slab.otf") format("opentype"),
+		url("fonts/kelly_slab.svg") format("svg");
+}
+/* HTML */
+<link href="http://fonts.googleapis.com/css?family=Kelly+Slab&subset=latin,latin-ext,cyrillic" rel="stylesheet" type="text/css">
+
+/* Naudojimas */
+font-family: 'Kelly+Slab', serif;

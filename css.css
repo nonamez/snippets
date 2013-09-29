@@ -1,0 +1,154 @@
+/* Proper box-model */
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* Clearfix hack */
+.clearfix:before,
+.clearfix:after {
+	content: " ";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+/* Cleafix hack: IE6/7 support */
+.clearfix {
+	*zoom: 1;
+}
+
+/* Hide: keep in to bots and screen-readers */
+.visuallyhidden {
+	position: absolute;
+	width: 1px; /* Setting this to 0 make it invisible for VoiceOver */
+	height: 1px; /* Setting this to 0 make it invisible for VoiceOver */
+	padding: 0;
+	margin: -1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	overflow: hidden;    
+}
+
+/* Break string */
+.break {
+	-ms-word-break: break-all;
+	word-break: break-all;
+
+	word-break: break-word;
+
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+
+/* Ellipse string */
+.ellipsis {
+	width: 250px;
+	white-space: nowrap;
+	overflow: hidden;
+	-ms-text-overflow: ellipsis; /* Required for IE8 */
+	-o-text-overflow: ellipsis; /* Required for Opera */
+	text-overflow: ellipsis;
+}
+
+/* Make wrap in pre tags */
+pre {
+	white-space: pre-wrap;       /* Chrome & Safari */
+	white-space: -moz-pre-wrap;  /* Mozilla since 1999 */
+	white-space: -pre-wrap;      /* Opera 4-6 */
+	white-space: -o-pre-wrap;    /* Opera 7 */
+	word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+
+/* Float classes */
+.float-right { float: right; }
+.float-left { float: left; } 
+
+/* Hide / Show classes */
+.hide { display: none; }
+.show { display: block; }
+
+
+/* Fonts */
+.content {
+	font: 1em/1.4 Segoe, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.title {
+	font: 1.7em/1.2 Baskerville, "Baskerville old face", "Hoefler Text", Garamond, "Times New Roman", serif;
+}
+
+.code {
+	font: 0.8em/1.6 Monaco, Mono-Space, monospace;
+}
+
+/* Disabled effect class */
+.disabled {
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+/* Links improvement */
+a {
+	text-decoration: none;
+	color: #08C;
+	transition: all 0.3s ease-out;
+	position: relative;
+	padding: .5em;
+	margin: -.5em;
+}
+
+a:hover { color: #0AF; }
+
+/* Print */
+@media print {
+	* {
+		background: none !important;
+		color: black !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+
+		/* Images, vectors and such */
+		filter: Gray(); 						 /* IE4-8: depreciated */
+		filter: url('desaturate.svg#grayscale'); /* SVG version for IE10, Firefox, Safari 5 and Opera */
+		-webkit-filter: grayscale(100%); 		 /* Chrome + Safari 6 */
+		-moz-filter: grayscale(100%); 			 /* Future proof */
+		-ms-filter: grayscale(100%); 			 /* Future proof */
+		-o-filter: grayscale(100%); 			 /* Future proof */
+		filter: grayscale(100%); 				 /* Future proof or polyfilled */
+	}
+
+	a {
+		text-decoration: underline;
+	}
+
+	a[href]:after {
+		content: " (" attr(href) ")"; 
+	}
+
+	a[href="#"],
+	a[href="javascript:"] {
+		content: "";
+	}
+}
+
+/* Add content from html. */
+.something{
+	/* In html <div data-content-text="some text"></div>*/
+	content: attr(data-content-text);
+}
+
+/* Safari fix*/
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+	select{
+		-webkit-appearance: none !important;
+		/* Safari custom select style*/
+	}
+}
+/* Safari fix end*/
