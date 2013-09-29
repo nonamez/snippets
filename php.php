@@ -2,8 +2,7 @@
 
 private function _simpleAjaxResult($input_data = FALSE, $show_data_on_error = FALSE)
 {
-
-	$result = isset($input_data['error']) ? !(bool)$input_data['error'] : FALSE;
+	$result = isset($input_data['error']) ? (! (bool) $input_data['error']) : FALSE;
 
 	if (isset($input_data['data']))
 		$data = $result ? $input_data['data'] : ($show_data_on_error ? $input_data['data'] : NULL);
@@ -22,11 +21,6 @@ private function _simpleAjaxResult($input_data = FALSE, $show_data_on_error = FA
 	$result = array('status' => $result, 'message' => $message, 'data' => $data);
 
 	die(json_encode($result));
-}
-
-private function _checkEmptyArrayValues($input_value)
-{
-	return count(array_filter($input_value)) > 0;
 }
 
 private function _filterFields($basic_fields)

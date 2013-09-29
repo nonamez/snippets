@@ -1,7 +1,3 @@
-function isNumber(number){
-	return !isNaN(parseFloat(number)) && isFinite(number);
-}
-
 function dateFromMysql(in_d){
 	var t = in_d.split(/[- :]/);
 	var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
@@ -29,7 +25,7 @@ function removeArrayElement(array){
 	return array;
 }
 
-//year-month-day
+// year-month-day
 new Date().setHours(0,0,0,0);
 
 // Disable URL cache
@@ -47,6 +43,10 @@ Array.prototype.inArray = function(value)
 			return true;
 			
 	return false;
+}
+
+function isNumber(number){
+	return !isNaN(parseFloat(number)) && isFinite(number);
 }
 
 function isInt(n) {
