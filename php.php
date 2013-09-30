@@ -45,3 +45,29 @@ private function _filterFields($basic_fields)
 	
 	return $basic_fields;
 }
+
+// $this->arrayToSimpleXml($data, new SimpleXMLElement('<map/>'))->asXML())
+private function arrayToSimpleXml($data, SimpleXMLElement $xml)
+{
+	if (!is_array($data) && !is_object($data))
+		return $xml;
+	
+	foreach ($data as $key => $value) {
+		if (is_array($value))
+			$this->arrayToSimpleXml($value, $xml->addChild($key));
+		else
+			$xml->addChild($key, $value);
+	}
+	
+	return $xml;
+}
+
+private function simpleXmlToArray($xml)
+{
+	$result_array = array();
+	
+	foreach ($xml as $index => $node )
+		$result_array[$index] = is_object($node) ? $this->simpleXmlToArray($node) : $node;
+	
+	return $result_array;
+}
