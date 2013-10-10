@@ -46,28 +46,26 @@ private function _filterFields($basic_fields)
 	return $basic_fields;
 }
 
-// $this->arrayToSimpleXml($data, new SimpleXMLElement('<root/>')))
-private function arrayToSimpleXml($data, SimpleXMLElement $xml)
+// $this->arrayOrObjectToSimpleXml($data, new SimpleXMLElement('<root/>')))
+private function arrayOrObjectToSimpleXml($data, SimpleXMLElement $xml)
 {
 	if (!is_array($data) && !is_object($data))
 		return $xml;
-
+		
 	foreach ($data as $key => $value) {
-		if (is_array($value))
-			$this->arrayToSimpleXml($value, $xml->addChild($key));
-		else
+		$key = is_numeric($key) ? 'item' : $key;
+		
+		if (is_array($value) || is_object($value))
+			$this->arrayOrObjectToSimpleXml($value, $xml->addChild($key));
+		else 
 			$xml->addChild($key, $value);
 	}
 	
 	return $xml;
 }
 
-private function simpleXmlToArray($xml)
+private function simpleXmlToArrayOrObject($xml, $array = TRUE)
 {
-	$result_array = array();
-	
-	foreach ($xml as $index => $node )
-		$result_array[$index] = is_object($node) ? $this->simpleXmlToArray($node) : $node;
-	
-	return $result_array;
+	return json_decode(json_encode($xml), $array);
 }
+
