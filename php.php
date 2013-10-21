@@ -69,3 +69,5 @@ private function simpleXmlToArrayOrObject($xml, $array = TRUE)
 	return json_decode(json_encode($xml), $array);
 }
 
+// unique multiarray
+array_values(array_map('unserialize', array_unique(array_map('serialize', $serving_cell_crossing_points))))
