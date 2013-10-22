@@ -71,3 +71,6 @@ private function simpleXmlToArrayOrObject($xml, $array = TRUE)
 
 // unique multiarray
 array_values(array_map('unserialize', array_unique(array_map('serialize', $serving_cell_crossing_points))))
+
+// swap values
+$a ^= $b ^= $a ^= $b;
