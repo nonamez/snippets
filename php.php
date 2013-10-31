@@ -74,3 +74,9 @@ array_values(array_map('unserialize', array_unique(array_map('serialize', $servi
 
 // swap values
 $a ^= $b ^= $a ^= $b;
+
+// range with leading zero
+$range = range(0, 10);
+$range = array_map(function ($value) {
+	return sprintf('%02d', $value);
+}, $range);
