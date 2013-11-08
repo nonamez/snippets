@@ -1,6 +1,6 @@
 <?php
 
-private function _simpleAjaxResult($input_data = FALSE, $show_data_on_error = FALSE)
+private function _simpleAjaxResult(array $input_data = FALSE, $show_data_on_error = FALSE)
 {
 	$result = isset($input_data['error']) ? (! (bool) $input_data['error']) : FALSE;
 
@@ -80,3 +80,7 @@ $range = range(0, 10);
 $range = array_map(function ($value) {
 	return sprintf('%02d', $value);
 }, $range);
+
+// Windows == TRUE, Linux == FALSE
+define('OS', strncasecmp(PHP_OS, 'WIN', 3) == 0);
+
