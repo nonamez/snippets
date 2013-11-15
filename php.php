@@ -84,3 +84,7 @@ $range = array_map(function ($value) {
 // Windows == TRUE, Linux == FALSE
 define('OS', strncasecmp(PHP_OS, 'WIN', 3) == 0);
 
+// Set timestamp second to 00
+$time = time();
+$time -= $time % 60;
+
