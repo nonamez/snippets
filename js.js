@@ -50,15 +50,19 @@ function isNumber(number){
 }
 
 function isInt(n) {
-   return n % 1 === 0;
+	return n % 1 === 0;
 }
 
 // If you don't know that the argument is a number-
 function isInt(n) {
-   return typeof n === 'number' && n % 1 == 0;
+	return typeof n === 'number' && n % 1 == 0;
 }
 
 // If you also want to include examples such as 1E308 is a float, and not an integer:
 function isInt(n) {
-   return typeof n === 'number' && parseFloat(n) == parseInt(n, 10) && !isNaN(n);
-} // 6 characters
+	return typeof n === 'number' && parseFloat(n) == parseInt(n, 10) && !isNaN(n);
+}
+
+Date.prototype.toMysqlFormat = function() {
+	return this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
+};
