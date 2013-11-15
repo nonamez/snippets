@@ -1,8 +1,22 @@
-function dateFromMysql(in_d){
+function dateFromMysqlFormat(in_d){
 	var t = in_d.split(/[- :]/);
 	var d = new Date(t[0], t[1]-1, t[2], t[3], t[4], t[5]);
 	return d;
 }
+
+Date.prototype.toMysqlFormat = function() {
+	var twoDigits = function(d) {
+		if(0 <= d && d < 10) 
+			return '0' + d.toString();
+		if(-10 < d && d < 0) 
+			return '-0' + (-1 * d).toString();
+
+		return d.toString();
+	}
+
+	return this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
+}
+
 
 function checkDate(d){
 	if(typeof d != 'string')
@@ -62,7 +76,3 @@ function isInt(n) {
 function isInt(n) {
 	return typeof n === 'number' && parseFloat(n) == parseInt(n, 10) && !isNaN(n);
 }
-
-Date.prototype.toMysqlFormat = function() {
-	return this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
-};
