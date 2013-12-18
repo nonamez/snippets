@@ -84,7 +84,11 @@ $range = array_map(function ($value) {
 // Windows == TRUE, Linux == FALSE
 define('OS', strncasecmp(PHP_OS, 'WIN', 3) == 0);
 
-// Set timestamp second to 00
+// Set timestamp seconds to 00
 $time = time();
 $time -= $time % 60;
 
+// parse int from string
+$int_val = (int) preg_replace('/[^0-9]/', '', $value);
+// parse float from string
+$float_val = (float) preg_replace('/[^0-9.]/', '', $value);
