@@ -1,6 +1,0 @@
-// Simple select
-select#test.foo[name="bar"]>option.foo-item-$[value="$#"]{$#}*6
-
-// Div tabs
-div#tabs>div[style="display:none"]{text $}*4
-div#tab-links>a[href="\#"]{tab $}*4
