@@ -76,3 +76,7 @@ function isInt(n) {
 function isInt(n) {
 	return typeof n === 'number' && parseFloat(n) == parseInt(n, 10) && !isNaN(n);
 }
+
+function randStep(min, max, step) {
+	return min + (step * Math.floor(Math.random()*(max-min)/step) );
+}
